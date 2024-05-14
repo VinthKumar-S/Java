@@ -1,0 +1,21 @@
+  String a,b,c,con,simple="SimpleInterest",compound="CompoundInterest";
+         Checkbox ch =(Checkbox)e.getItemSelectable();
+         con=ch.getLabel();
+
+         a=t1.getText();
+         b=t2.getText();
+         c=t3.getText();
+         int p,n,r;
+         double sim,com;
+         p=Integer.parseInt(a);
+         n=Integer.parseInt(b);
+         r=Integer.parseInt(c);
+         sim=(p*n*r)/100;
+         com=p*Math.pow(1.0+n/100.0,r)-p;
+         if(ch.getState()==true) {
+             if (con.equals(simple)) {
+                 l3.setText("SimpleInterest:" + sim);
+             } else if (con.equals(compound)) {
+                 l3.setText("CompoundInterest:" + com);
+             }
+         }
