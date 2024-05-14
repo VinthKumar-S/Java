@@ -1,0 +1,193 @@
+Fib.jsp
+<html>
+<head><title>FIBONACCI SERIES IN JSP</title></head>
+<body>
+<form method="get">
+<h3> Enter the number of terms you want:
+<input type="text" name="limit">
+</h3>
+</form>
+<h3>
+<%
+ String s = request.getParameter("limit");
+ if (s != null) {
+%>
+<%@ page import = "java.io.*" %>
+<%@ page import = "java.lang.*" %>
+<%
+    int n=0;
+    n=Integer.parseInt(s);
+   out.println("No of terms to be printed is  "+n);
+%>
+<br>
+<br>
+<br>
+The series generated are listed below :<br><br>
+<%
+    int a=1;
+    int b=1;
+   out.println(""+a+",\t"+b+",\t");
+  for(int i=3;i<= n;i++)
+{
+    int c=a+b;
+   out.print(""+c+",\t");
+  a=b;
+ b=c;
+}
+}
+%>
+</h3>
+</body>
+</html>
+
+
+
+digital clock −
+<%@ page import = "java.io.*,java.util.*" %>
+
+<html>
+   <head>
+      <title>Auto Refresh Header Example</title>
+   </head>
+   <body>
+      <center>
+         <h2>Auto Refresh Header Example</h2>
+         <%
+            // Set refresh, autoload time as 5 seconds
+            response.setIntHeader("Refresh", 5);
+            // Get current time
+            Calendar calendar = new GregorianCalendar();
+            String am_pm;
+            int hour = calendar.get(Calendar.HOUR);
+            int minute = calendar.get(Calendar.MINUTE);
+            int second = calendar.get(Calendar.SECOND);
+            if(calendar.get(Calendar.AM_PM) == 0)
+               am_pm = "AM";
+            else
+               am_pm = "PM";
+            String CT = hour+":"+ minute +":"+ second +" "+ am_pm;
+            out.println("Current Time is: " + CT + "\n");
+         %>
+      </center>
+   </body>
+</html>
+
+switch_statement_jsp.jsp
+
+<HTML>
+<HEAD>
+    <TITLE>use switch statement in jsp page</TITLE>
+</HEAD>
+<BODY bgcolor="#6E6E6E">
+    <FORM NAME="form1" ACTION="jsp_with_post_method.jsp" METHOD="get">
+        <TABLE bgcolor="#D8D8D8">
+        <tr>
+            <td> Enter number </td>
+            <td><input type="text" name="num"></td>
+        </tr>
+        
+        <tr align="center"><td></td>
+        <td><INPUT TYPE="submit" VALUE="show"></td></tr></TABLE>
+		<br>
+		<TABLE bgcolor="#E0ECF8"><tr><td>
+    </FORM>
+    
+    <%
+      if (request.getParameter("num") != null &&
+          request.getParameter("num")!=""){
+	  for(int i=0; i<request.getParameter("num").length(); i++){
+		char value = request.getParameter("num").charAt(i);
+		// switch statement with some value
+		switch(value){
+		   case '0':
+			out.print("ZERO");
+			break;
+		   case '1':
+			out.print("ONE");
+			break;
+		   case '2':
+			out.println("TWO");
+			break;
+		   case '3':
+			out.println("THREE");
+			break;
+		   case '4':
+			out.println("FOUR");
+			break;
+		   case '5':
+			out.println("FIVE");
+			break;
+		   case '6':
+			out.println("SIX");
+			break;
+		   case '7':
+			out.println("SEVEN");
+			break;
+		   case '8':
+			out.println("EIGHT");
+			break;
+		   case '9':
+			out.println("NINE");
+			break;					
+                }
+	  }
+     }
+    %>
+    </td></tr></TABLE>
+</body> 
+</html>
+
+
+
+
+Example
+Let us modify our Form Example to set the cookies for the first and the last name.
+
+<%
+   // Create cookies for first and last names.      
+   Cookie firstName = new Cookie("first_name", request.getParameter("first_name"));
+   Cookie lastName = new Cookie("last_name", request.getParameter("last_name"));
+   
+   // Set expiry date after 24 Hrs for both the cookies.
+   firstName.setMaxAge(60*60*24); 
+   lastName.setMaxAge(60*60*24); 
+   
+   // Add both the cookies in the response header.
+   response.addCookie( firstName );
+   response.addCookie( lastName );
+%>
+
+<html>
+   <head>
+      <title>Setting Cookies</title>
+   </head>
+   
+   <body>
+      <center>
+         <h1>Setting Cookies</h1>
+      </center>
+      <ul>
+         <li><p><b>First Name:</b>
+            <%= request.getParameter("first_name")%>
+         </p></li>
+         <li><p><b>Last  Name:</b>
+            <%= request.getParameter("last_name")%>
+         </p></li>
+      </ul>
+   
+   </body>
+</html>
+Let us put the above code in main.jsp file and use it in the following HTML page −
+
+<html>
+   <body>
+      
+      <form action = "main.jsp" method = "GET">
+         First Name: <input type = "text" name = "first_name">
+         <br />
+         Last Name: <input type = "text" name = "last_name" />
+         <input type = "submit" value = "Submit" />
+      </form>
+      
+   </body>
+</html>
